@@ -1,20 +1,17 @@
 import { useState } from "react";
 import ArchiveCard from "./ArchiveCard";
 import { motion } from "framer-motion";
+import SectionTitle from "./SectionTitle";
 
-const Archive = () => {
+const Skill = () => {
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <div className="max-w-contentContainer mx-auto px-4 py-24">
-      <div className="w-full flex flex-col items-center">
-        <h2 className="text-3xl font-titleFont font-semibold">
-          Other Noteworthy Projects
-        </h2>
-        <p className="text-sm font-titleFont text-textGreen">
-          view the archive
-        </p>
-      </div>
+    <section
+      id="skill"
+      className="max-w-containerSmall mx-auto py-10 lgl:py-32 flex flex-col gap-8"
+    >
+      <SectionTitle title="My Skill" />
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-10 lgl:px-10">
         <ArchiveCard
           title="Educare Engligh Learning Academy"
@@ -198,8 +195,8 @@ const Archive = () => {
           </button>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 
-export default Archive;
+export default Skill;

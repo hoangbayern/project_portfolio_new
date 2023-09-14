@@ -14,3 +14,10 @@
 .active {
   color: #64ffda;
 }
+
+@media (min-width: 1024px) {
+  .vertical-timeline-element-date {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}

@@ -1,120 +1,38 @@
-import { useState } from "react";
+import React from "react";
 import SectionTitle from "./SectionTitle";
-import Amazon from "./works/Amazon";
-import Apple from "./works/Apple";
-import Google from "./works/Google";
-import ReactBD from "./works/ReactBD";
-import Splash from "./works/Splash";
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component";
+import "react-vertical-timeline-component/style.min.css";
+import { experiencesData } from "@/lib/data";
 
 const Experience = () => {
-  const [workReactbd, setWorkReactbd] = useState(true);
-  const [workGoogle, setWorkGoogle] = useState(false);
-  const [workApple, setWorkApple] = useState(false);
-  const [workSplash, setWorkSplash] = useState(false);
-  const [workAmazon, setWorkAmazon] = useState(false);
-
-  const handleReactbd = () => {
-    setWorkReactbd(true);
-    setWorkGoogle(false);
-    setWorkApple(false);
-    setWorkSplash(false);
-    setWorkAmazon(false);
-  };
-
-  const handleGoogle = () => {
-    setWorkReactbd(false);
-    setWorkGoogle(true);
-    setWorkApple(false);
-    setWorkSplash(false);
-    setWorkAmazon(false);
-  };
-
-  const handleApple = () => {
-    setWorkReactbd(false);
-    setWorkGoogle(false);
-    setWorkApple(true);
-    setWorkSplash(false);
-    setWorkAmazon(false);
-  };
-  const handleSplash = () => {
-    setWorkReactbd(false);
-    setWorkGoogle(false);
-    setWorkApple(false);
-    setWorkSplash(true);
-    setWorkAmazon(false);
-  };
-  const handleAmazon = () => {
-    setWorkReactbd(false);
-    setWorkGoogle(false);
-    setWorkApple(false);
-    setWorkSplash(false);
-    setWorkAmazon(true);
-  };
   return (
     <section
       id="experience"
       className="max-w-containerxs mx-auto py-10 lgl:py-24 px-4"
     >
-      <SectionTitle title="Where I have Worked" titleNo="02" />
-      <div className="w-full mt-10 flex flex-col md:flex-row gap-16">
-        <ul className="md:w-32 flex flex-col">
-          <li
-            onClick={handleReactbd}
-            className={`${
-              workReactbd
-                ? "border-l-textGreen text-textGreen"
-                : "border-l-hoverColor text-textDark"
-            } border-l-2 bg-transparent hover:bg-[#112240] py-3 text-sm  cursor-pointer duration-300 px-8 font-medium`}
+      <SectionTitle title="Where I have Worked" />
+      <VerticalTimeline className="!mt-10">
+        {experiencesData.map((experience) => (
+          <VerticalTimelineElement key={experience.id}
+            contentStyle={{ background: '#112240', color: "#fff", border: "1px solid rgb(100 255 218 / 1)" }}
+            contentArrowStyle={{ borderRight: "7px solid rgb(100 255 218 / 1)" }}
+            date={experience.date}
+            iconStyle={{ background: "#112240", color: "#fff" }}
+            icon={experience.icon}
           >
-            RactBD
-          </li>
-          <li
-            onClick={handleGoogle}
-            className={`${
-              workGoogle
-                ? "border-l-textGreen text-textGreen"
-                : "border-l-hoverColor text-textDark"
-            } border-l-2 bg-transparent hover:bg-[#112240] py-3 text-sm  cursor-pointer duration-300 px-8 font-medium`}
-          >
-            Google
-          </li>
-          <li
-            onClick={handleApple}
-            className={`${
-              workApple
-                ? "border-l-textGreen text-textGreen"
-                : "border-l-hoverColor text-textDark"
-            } border-l-2 bg-transparent hover:bg-[#112240] py-3 text-sm  cursor-pointer duration-300 px-8 font-medium`}
-          >
-            Apple
-          </li>
-          <li
-            onClick={handleSplash}
-            className={`${
-              workSplash
-                ? "border-l-textGreen text-textGreen"
-                : "border-l-hoverColor text-textDark"
-            } border-l-2 bg-transparent hover:bg-[#112240] py-3 text-sm  cursor-pointer duration-300 px-8 font-medium`}
-          >
-            Splash
-          </li>
-          <li
-            onClick={handleAmazon}
-            className={`${
-              workAmazon
-                ? "border-l-textGreen text-textGreen"
-                : "border-l-hoverColor text-textDark"
-            } border-l-2 bg-transparent hover:bg-[#112240] py-3 text-sm  cursor-pointer duration-300 px-8 font-medium`}
-          >
-            Amazon
-          </li>
-        </ul>
-        {workReactbd && <ReactBD />}
-        {workGoogle && <Google />}
-        {workApple && <Apple />}
-        {workSplash && <Splash />}
-        {workAmazon && <Amazon />}
-      </div>
+            <h3 className="vertical-timeline-element-title text-xl font-titleFont font-semibold tracking-wider">
+              {experience.title}
+            </h3>
+            <h5 className="vertical-timeline-element-subtitle text-sm">{experience.location}</h5>
+            <p>
+              {experience.description}
+            </p>
+          </VerticalTimelineElement>
+        ))}
+      </VerticalTimeline>
     </section>
   );
 };
