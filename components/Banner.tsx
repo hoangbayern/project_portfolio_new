@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { Typewriter } from "react-simple-typewriter";
+
 const Banner = () => {
   return (
     <section
@@ -21,7 +23,15 @@ const Banner = () => {
       >
         Huy Hoang.
         <span className="text-textDark mt-2 lgl:mt-4">
-          I build things for the web.
+          <Typewriter
+            words={['I’m a FrontEnd Developer.', 'I build things for the web.']}
+            loop
+            cursor
+            cursorStyle='|'
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
         </span>
       </motion.h1>
       <motion.p
@@ -35,14 +45,14 @@ const Banner = () => {
         creating user-friendly and responsive web applications using React and
         its ecosystem.
       </motion.p>
-      <a href="https://github.com/noorjsdivs" target="_blank">
+      <a href="#contact">
         <motion.button
           initial={{ y: 10, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.9 }}
           className="w-52 h-14 text-sm font-titleFont border border-textGreen rounded-md text-textGreen tracking-wide hover:bg-hoverColor duration-300"
         >
-          Check out my project!
+          Contact with me!
         </motion.button>
       </a>
     </section>
