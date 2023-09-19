@@ -49,27 +49,27 @@ export const socialLinks = [
     {
       id: 1,  
       icon: React.createElement(TbBrandGithub),
-      hash: "https://github.com/noorjsdivs",
+      hash: "https://github.com/hoangbayern",
     },
     {
       id: 2,  
       icon: React.createElement(SlSocialYoutube),
-      hash: "https://github.com/noorjsdivs",
+      hash: "https://www.youtube.com/channel/UCA1QQEHxYaA2l_HU8KOmBrw",
     },
     {
       id: 3,
       icon: React.createElement(SlSocialLinkedin),
-      hash: "https://github.com/noorjsdivs",
+      hash: "#",
     },
     {
       id: 4,
       icon: React.createElement(SlSocialFacebook),
-      hash: "https://github.com/noorjsdivs",
+      hash: "https://www.facebook.com/RoyalVlogss",
     },
     {
       id: 5,
       icon: React.createElement(SlSocialInstagram),
-      hash: "https://github.com/noorjsdivs",
+      hash: "https://www.instagram.com/bayernkk/",
     },
   ] as const;
 

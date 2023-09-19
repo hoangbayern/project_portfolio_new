@@ -10,6 +10,7 @@ import RightSide from "@/components/RightSide";
 import Head from "next/head";
 import { motion } from "framer-motion";
 import Skill from "@/components/Skill";
+import { Toaster } from "react-hot-toast";
 
 export default function Home() {
   return (
@@ -39,6 +40,7 @@ export default function Home() {
             <Experience />
             <Contact />
             <Footer />
+            <Toaster position="top-right" />
           </div>
           {/* <motion.div
             initial={{ opacity: 0 }}

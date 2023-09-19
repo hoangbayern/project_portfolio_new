@@ -1,6 +1,41 @@
-import Link from "next/link";
+import { FormEvent, useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 
 const Contact = () => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+
+  const resetForm = () => {
+    setName('');
+    setEmail('');
+    setMessage('');
+  };
+
+  const onSubmit = async (e: FormEvent) => {
+    e.preventDefault()
+
+    try {
+      const res = await fetch('/api/send', {
+        method: 'POST',
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+        }),
+        headers: {
+          'content-type': 'application/json',
+        },
+      })
+      if (res.status === 200) {
+        toast.success("Send Message success!");
+        resetForm();
+      }
+    } catch (err: any) {
+      toast.error(err)
+    }
+  }
+
   return (
     <section
       id="contact"
@@ -13,16 +48,46 @@ const Contact = () => {
         try my best to get back to you!
       </p>
 
-      <form action="" className="flex flex-col gap-3 mt-6">
-        <input type="email" placeholder="Your email" className="bg-inherit h-14 border
-          border-textGreen rounded-lg px-4 sm:w-[38-rem] outline-none" />
-        <textarea name="" id="" className="h-52 rounded-lg bg-inherit p-4 border
-         border-textGreen sm:w-[38rem] outline-none" placeholder="Your message"></textarea>
-        <button type="submit" className="bg-black py-3 px-3 rounded-full h-[3rem] w-[8rem]
-         text-white">Submit</button>
+      <form onSubmit={onSubmit}
+        className="flex flex-col gap-3 mt-6"
+      >
+        <input
+          type="text"
+          placeholder="Your name"
+          name="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="bg-inherit h-14 border
+          border-textGreen rounded-lg px-4 sm:w-[38-rem] outline-none"
+        />
+        <input
+          type="email"
+          placeholder="Your email"
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="bg-inherit h-14 border
+          border-textGreen rounded-lg px-4 sm:w-[38-rem] outline-none"
+        />
+        <textarea
+          name="message"
+          id=""
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          className="h-52 rounded-lg bg-inherit p-4 border
+         border-textGreen sm:w-[38rem] outline-none"
+          placeholder="Your message"
+        ></textarea>
+        <button
+          type="submit"
+          className="bg-gray-700 py-3 px-3 rounded-full h-[3rem] w-[8rem]
+         text-white hover:bg-black hover:shadow-lg transition"
+        >
+          Submit
+        </button>
       </form>
     </section>
-  );
+  )
 };
 
 export default Contact;

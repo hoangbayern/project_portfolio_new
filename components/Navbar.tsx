@@ -10,6 +10,7 @@ import { links, socialLinks } from "@/lib/data";
 const Navbar = () => {
   const ref = useRef<string | any>("");
   const [show, setShow] = useState(false);
+  const [activeMenu, setActiveMenu] = useState("Home");
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
     setShow(false);
@@ -75,7 +76,7 @@ const Navbar = () => {
               transition={{ delay: 0.5 }}
               className="px-4 py-2 rounded-md text-textGreen text-[13px] border border-textGreen hover:bg-hoverColor duration-300"
             >
-              My Resume
+              Resume
             </motion.button>
           </a>
         </div>
@@ -108,12 +109,32 @@ const Navbar = () => {
                 <ul className="flex justify-center items-center flex-col text-base gap-7 w-full pt-5">
 
                   {links.map((link)=> (
-                    <Link key={link.id}
+                    <>
+                     {link.name === activeMenu ? (
+                      <Link key={link.id}
+                      className="flex items-center gap-1 font-medium text-white hover:text-textGreen
+                       cursor-pointer duration-300 nav-link bg-black/[0.7] py-3 rounded-full w-full justify-center
+                       border border-textGreen"
+                      href={link.hash}
+                      onClick={()=> setActiveMenu(link.name)}
+                    >
+                      <motion.li
+                        initial={{ x: 20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ duration: 0.2, delay: 0.1, ease: "easeIn" }}
+                      >
+                        {link.name}
+                      </motion.li>
+                    </Link>
+                     ) : (
+                      <Link key={link.id}
                     className="flex items-center gap-1 font-medium text-white hover:text-textGreen
-                     cursor-pointer duration-300 nav-link bg-black/[0.7] py-3 rounded-full w-full justify-center
-                     border border-textGreen"
+                     cursor-pointer duration-300 nav-link bg-black/[0.7] py-3 rounded-full w-full justify-center"
                     href={link.hash}
-                    onClick={handleScroll}
+                    onClick={()=> {
+                      setShow(false);
+                      setActiveMenu(link.name)
+                    }}
                   >
                     <motion.li
                       initial={{ x: 20, opacity: 0 }}
@@ -123,6 +144,8 @@ const Navbar = () => {
                       {link.name}
                     </motion.li>
                   </Link>
+                     )}
+                    </>
                   ))}
 
                 </ul>
