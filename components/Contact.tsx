@@ -1,10 +1,37 @@
-import { FormEvent, useEffect, useState } from "react";
-import { toast } from "react-hot-toast";
+import { useEffect, useState } from "react";
+import { Alert, AlertColor, LoadingButton } from '@mui/lab';
+import { Snackbar, FormGroup } from '@mui/material';
+import AdminInput from '@/components/Input/Input';
+import { validEmail } from '@/lib/validation';
+import AdminTextArea from '@/components/Input/TextArea'
 
 const Contact = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
+  const [openAlert, setOpenAlert] = useState<boolean>(false);
+  const [alertMessage, setAlertMessage] = useState<{ message: string; severity: AlertColor | undefined }>({
+    message: '',
+    severity: undefined,
+  });
+  const [loadingSubmit, setLoadingSubmit] = useState<boolean>(false);
+  const [errorEmail, setErrorEmail] = useState<{ status: boolean; message: string }>({
+    status: false,
+    message: '',
+  });
+  const [errorName, setErrorName] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!validEmail(email) && email !== '') {
+      setErrorEmail({ status: true, message: 'There is an error in the format of the email address' });
+      return;
+    }
+    if (email.length > 255) {
+      setErrorEmail({ status: true, message: 'Please enter your email address within 255 characters' });
+      return;
+    }
+    setErrorEmail({ status: false, message: '' });
+  }, [email]);
 
   const resetForm = () => {
     setName('');
@@ -12,8 +39,9 @@ const Contact = () => {
     setMessage('');
   };
 
-  const onSubmit = async (e: FormEvent) => {
-    e.preventDefault()
+  const handleSubmit = async () => {
+    setLoadingSubmit(true);
+    setAlertMessage({ message: '', severity: undefined });
 
     try {
       const res = await fetch('/api/send', {
@@ -28,11 +56,20 @@ const Contact = () => {
         },
       })
       if (res.status === 200) {
-        toast.success("Send Message success!");
+        setOpenAlert(true);
+        setAlertMessage({
+          message: 'Send Message Success!',
+          severity: 'success',
+        });
         resetForm();
+        setLoadingSubmit(false);
       }
     } catch (err: any) {
-      toast.error(err)
+      setAlertMessage({
+        message: err,
+        severity: 'error',
+      });
+      setLoadingSubmit(false);
     }
   }
 
@@ -48,44 +85,94 @@ const Contact = () => {
         try my best to get back to you!
       </p>
 
-      <form onSubmit={onSubmit}
-        className="flex flex-col gap-3 mt-6"
-      >
-        <input
+        <FormGroup className=" text-white">
+        <AdminInput className="!text-white"
+          label=""
+          id="name"
+          error={!!errorName}
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
+            setErrorName(e.target.value.length > 20 ? 'Please enter your name within 20 characters' : null);
+          }}
           type="text"
           placeholder="Your name"
-          name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="bg-inherit h-14 border
-          border-textGreen rounded-lg px-4 sm:w-[38-rem] outline-none"
+          helperText={errorName || ''}
+          sx={{ marginTop: '10px' , borderRadius: '10px', width: '38rem' , outline: 'none', color: 'white !important', fontWeight: '700' }}
         />
-        <input
-          type="email"
-          placeholder="Your email"
-          name="email"
+      </FormGroup>
+      <FormGroup>
+        <AdminInput
+          label=""
+          error={errorEmail?.status}
+          id="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="bg-inherit h-14 border
-          border-textGreen rounded-lg px-4 sm:w-[38-rem] outline-none"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+          type="email"
+          variant="outlined"
+          fullWidth
+          placeholder="Your email"
+          helperText={errorEmail.message || ''}
+          sx={{ borderRadius: '10px', width: '38rem' , outline: 'none', color: 'white !important', fontWeight: '700' }}
         />
-        <textarea
-          name="message"
-          id=""
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          className="h-52 rounded-lg bg-inherit p-4 border
-         border-textGreen sm:w-[38rem] outline-none"
-          placeholder="Your message"
-        ></textarea>
-        <button
+      </FormGroup>
+      <FormGroup>
+      <AdminTextArea
+        label=""
+        placeholder="Your message"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        sx={{
+          resize: 'none',
+          '&::placeholder': {
+            color: 'gray',
+          },
+        }}
+      />
+      </FormGroup>
+        <LoadingButton
           type="submit"
+          variant="outlined"
+          loading={loadingSubmit}
           className="bg-gray-700 py-3 px-3 rounded-full h-[3rem] w-[8rem]
          text-white hover:bg-black hover:shadow-lg transition"
+         onClick={handleSubmit}
+         disabled={name === '' || email.length > 255 || name.length > 20 || !validEmail(email) || errorEmail?.status}
         >
-          Submit
-        </button>
-      </form>
+          Send
+        </LoadingButton>
+      {openAlert && (
+        <Snackbar
+          open={openAlert}
+          autoHideDuration={3000}
+          onClose={() => {
+            setAlertMessage({
+              message: '',
+              severity: undefined,
+            });
+            setOpenAlert(false);
+          }}
+          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        >
+          <Alert
+            variant="filled"
+            elevation={6}
+            onClose={() => {
+              setAlertMessage({
+                message: '',
+                severity: undefined,
+              });
+              setOpenAlert(false);
+            }}
+            severity={alertMessage.severity}
+            sx={{ width: '100%' }}
+          >
+            {alertMessage.message}
+          </Alert>
+        </Snackbar>
+      )}
     </section>
   )
 };
