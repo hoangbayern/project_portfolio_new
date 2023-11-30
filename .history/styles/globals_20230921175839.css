@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .contactInput {
+    @apply w-full text-base text-white placeholder:text-textLight border border-b-[1px] border-transparent border-b-textGreen py-3 px-2 outline-none focus-within:border-[1px] focus-within:border-textGreen duration-100 bg-zinc-800;
+  }
+}
+
+.scrollbarHide::-webkit-scrollbar {
+  display: none;
+}
+.active {
+  color: #64ffda;
+}
+.MuiInputBase-input {
+  color: white;
+  border: solid 1px teal;
+  border-radius: 8px;
+  outline: none;
+}
+.MuiInputBase-input:focus {
+  border: none;
+}
+
+@media (min-width: 1024px) {
+  .vertical-timeline-element-date {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}

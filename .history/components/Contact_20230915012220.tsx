@@ -1,0 +1,25 @@
+import Link from "next/link";
+
+const Contact = () => {
+  return (
+    <section
+      id="contact"
+      className="max-w-contentContainer mx-auto py-10 xl:py-32 flex flex-col gap-4 items-center justify-center"
+    >
+      <h2 className="font-titleFont text-5xl font-semibold">Get In Touch</h2>
+      <p className="max-w-[600px] text-center text-textDark">
+        Although I’m not currently looking for any new opportunities, my inbox
+        is always open. Whether you have a question or just want to say hi, I’ll
+        try my best to get back to you!
+      </p>
+
+      <form action="">
+        <input type="text" />
+        <textarea name="" id="" cols={30} rows={10}></textarea>
+        <button type="submit" className="bg-gray-900 py-3 px-3 rounded-full">Submit</button>
+      </form>
+    </section>
+  );
+};
+
+export default Contact;
