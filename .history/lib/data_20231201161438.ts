@@ -7,7 +7,7 @@ import {
   SlSocialInstagram,
 } from "react-icons/sl";
 import { RxOpenInNewWindow } from "react-icons/rx";
-import { shoesImg, socialAPIImg, adminImg, dogImg } from "@/public/assets";
+import { shoesImg, cyberImg, noorShop } from "@/public/assets";
 import { CgWorkAlt } from "react-icons/cg";
 import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
@@ -79,7 +79,7 @@ export const socialLinks = [
       lable: "Featured Project",
       title: "Shoes Store",
       description:
-        "Shoes Store is an e-commerce website specialized in shoe sales, featuring a user-friendly interface and integrating PHP, Laravel, and Bootstrap to create a convenient and reliable shopping experience.",
+        "An Amazon clone website for visualizing personalized Amazon website. View your products, Add your account with O-auth and then make the purchage using stripe.",
       tags: ["PHP", "Laravel", "MySQL", "Laradock", "Bootstrap", "Javascript"],
       imageUrl: shoesImg,
       altImg: "shoesImg",
@@ -88,55 +88,37 @@ export const socialLinks = [
         iconWeb: React.createElement(RxOpenInNewWindow),
       },
       hash: {
-        linkGit: "https://github.com/hoangbayern/web_bangiay/tree/develop",
+        linkGit: "#",
         linkWeb: "#",
       },
     },
     {
       id: 2,
       lable: "Featured Project",
-      title: "Web Social API",
+      title: "Cyber Security Blog",
       description:
         "Job board for remote developer jobs. I was the front-end developer. It has features like filtering, sorting and pagination.",
-      tags: ["Laravel", "Laradock", "MySQL", "Swagger", "Postman"],
-      imageUrl: socialAPIImg,
-      altImg: "socialAPI",
+      tags: ["React", "TypeScript", "Next.js", "Tailwind", "Redux"],
+      imageUrl: cyberImg,
+      altImg: "cyberImg",
       icon: {
         iconGit: React.createElement(TbBrandGithub),
         iconWeb: React.createElement(RxOpenInNewWindow),
       },
       hash: {
-        linkGit: "https://github.com/hoangbayern/social_backend/tree/develop",
+        linkGit: "#",
         linkWeb: "#",
       },
     },
     {
       id: 3,
       lable: "Featured Project",
-      title: "Project Admin",
+      title: "Word Analytics",
       description:
         "A public web app for quick analytics on text. It shows word count, character count and social media post limits.",
-      tags: ["PHP", "Laravel", "MySQL", "Laradock", "Bootstrap", "Javascript"],
-      imageUrl: adminImg,
-      altImg: "adminImg",
-      icon: {
-        iconGit: React.createElement(TbBrandGithub),
-        iconWeb: React.createElement(RxOpenInNewWindow),
-      },
-      hash: {
-        linkGit: "https://gitlab.com/hoangbayern/project_laravel/-/tree/hotfix/v1.1.1?ref_type=heads",
-        linkWeb: "#",
-      },
-    },
-    {
-      id: 4,
-      lable: "Featured Project",
-      title: "Animal Shop",
-      description:
-        "A public web app for quick analytics on text. It shows word count, character count and social media post limits.",
-      tags: ["React", "Nodejs", "Javascript", "CSS"],
-      imageUrl: dogImg,
-      altImg: "dogImg",
+      tags: ["React", "Next.js", "SQL", "Tailwind", "Framer"],
+      imageUrl: noorShop,
+      altImg: "noorShopImg",
       icon: {
         iconGit: React.createElement(TbBrandGithub),
         iconWeb: React.createElement(RxOpenInNewWindow),
@@ -151,20 +133,29 @@ export const socialLinks = [
   export const experiencesData = [
     {
       id: 1,
-      title: "A student majoring in Information Technology",
+      title: "Graduated bootcamp",
       location: "University of transport and communications, Ha Noi",
       description:
-        "I am currently in my final year at the University of Transport and Communications, specializing in web programming.",
+        "I graduated after 6 months of studying. I immediately found a job as a front-end developer.",
       icon: React.createElement(LuGraduationCap),
       date: "2020 - present",
     },
     {
       id: 2,
-      title: "Web Developer",
+      title: "Front-End Developer",
       location: "Duy Tan, Ha Noi",
       description:
-        "I completed a 6-month internship and worked as a collaborator at DEHA company. I participated in various front-end web development projects using Next.js and gained valuable teamwork skills during this experience.",
+        "I worked as a front-end developer for 2 years in 1 job and 1 year in another job. I also upskilled to the full stack.",
       icon: React.createElement(CgWorkAlt),
       date: "Summer 2023",
+    },
+    {
+      id: 3,
+      title: "Full-Stack Developer",
+      location: "Houston, TX",
+      description:
+        "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, Prisma and MongoDB. I'm open to full-time opportunities.",
+      icon: React.createElement(FaReact),
+      date: "2021 - present",
     },
   ] as const;

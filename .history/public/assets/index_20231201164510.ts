@@ -6,6 +6,5 @@ import noorShop from "./images/noorShop.png";
 import shoesImg from "./images/shoesImg.jpeg";
 import socialAPIImg from "./images/socialAPI.jpeg";
 import adminImg from "./images/adminImg.jpeg";
-import dogImg from "./images/dogImg.jpeg";
 
-export { logo, profileImg, amazonImg, cyberImg, noorShop, shoesImg, socialAPIImg, adminImg, dogImg };
+export { logo, profileImg, amazonImg, cyberImg, noorShop, shoesImg, socialAPIImg, adminImg };

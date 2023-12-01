@@ -20,7 +20,7 @@ const About = () => {
           </p>
           <p className="text-lg">
             <span className="italic text-textGreen">When I&apos;m not coding</span>, I enjoy
-            playing games, watching movies, editing video and playing soccer. I also
+            playing games, watching movies, edit video, and playing soccer. I also
             enjoy <span className="font-medium">learning new things</span>. I am
             currently learning about{" "}
             <span className="font-medium">imformation technology</span>.

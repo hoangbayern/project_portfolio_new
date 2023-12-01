@@ -167,4 +167,13 @@ export const socialLinks = [
       icon: React.createElement(CgWorkAlt),
       date: "Summer 2023",
     },
+    {
+      id: 3,
+      title: "Full-Stack Developer",
+      location: "Houston, TX",
+      description:
+        "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, Prisma and MongoDB. I'm open to full-time opportunities.",
+      icon: React.createElement(FaReact),
+      date: "2021 - present",
+    },
   ] as const;

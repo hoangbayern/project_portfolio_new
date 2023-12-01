@@ -131,7 +131,7 @@ export const socialLinks = [
     {
       id: 4,
       lable: "Featured Project",
-      title: "Animal Shop",
+      title: "Word Analytics",
       description:
         "A public web app for quick analytics on text. It shows word count, character count and social media post limits.",
       tags: ["React", "Nodejs", "Javascript", "CSS"],
@@ -151,20 +151,29 @@ export const socialLinks = [
   export const experiencesData = [
     {
       id: 1,
-      title: "A student majoring in Information Technology",
+      title: "Graduated bootcamp",
       location: "University of transport and communications, Ha Noi",
       description:
-        "I am currently in my final year at the University of Transport and Communications, specializing in web programming.",
+        "I graduated after 6 months of studying. I immediately found a job as a front-end developer.",
       icon: React.createElement(LuGraduationCap),
       date: "2020 - present",
     },
     {
       id: 2,
-      title: "Web Developer",
+      title: "Front-End Developer",
       location: "Duy Tan, Ha Noi",
       description:
-        "I completed a 6-month internship and worked as a collaborator at DEHA company. I participated in various front-end web development projects using Next.js and gained valuable teamwork skills during this experience.",
+        "I worked as a front-end developer for 2 years in 1 job and 1 year in another job. I also upskilled to the full stack.",
       icon: React.createElement(CgWorkAlt),
       date: "Summer 2023",
+    },
+    {
+      id: 3,
+      title: "Full-Stack Developer",
+      location: "Houston, TX",
+      description:
+        "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, Prisma and MongoDB. I'm open to full-time opportunities.",
+      icon: React.createElement(FaReact),
+      date: "2021 - present",
     },
   ] as const;

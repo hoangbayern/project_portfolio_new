@@ -15,12 +15,12 @@ const About = () => {
           <p className="text-lg"> 
             Hello! My name is{" "}
             <span className="text-textGreen">Ha Huy Hoang</span> and I&apos;m passionate about creating things that thrive on the internet. With a strong inclination towards logical thinking and programming, I embarked on a journey into the field of Information Technology at university. Throughout my academic pursuits and internships, I've had the opportunity to engage in various projects, ranging from crafting personal websites to developing e-commerce web applications.
-            I firmly believe that continuous learning is integral to personal development. Hence, I actively seek opportunities to enhance my knowledge, staying abreast of the latest trends and cutting-edge technologies in web development.
+
 
           </p>
           <p className="text-lg">
             <span className="italic text-textGreen">When I&apos;m not coding</span>, I enjoy
-            playing games, watching movies, editing video and playing soccer. I also
+            playing video games, watching movies, and playing soccer. I also
             enjoy <span className="font-medium">learning new things</span>. I am
             currently learning about{" "}
             <span className="font-medium">imformation technology</span>.
