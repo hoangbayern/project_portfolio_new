@@ -11,6 +11,7 @@ import Head from "next/head";
 import { motion } from "framer-motion";
 import Skill from "@/components/Skill";
 import { Toaster } from "react-hot-toast";
+import ChatFacebookMess from "@/components/ChatFacebookMess";
 
 export default function Home() {
   return (
@@ -51,6 +52,7 @@ export default function Home() {
             <RightSide />
           </motion.div> */}
         </div>
+        <ChatFacebookMess />
       </main>
     </>
   );
