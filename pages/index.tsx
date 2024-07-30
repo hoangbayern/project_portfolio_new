@@ -73,7 +73,6 @@ export default function Home() {
             <RightSide />
           </motion.div> */}
         </div>
-        <ChatFacebookMess />
       </main>
     </>
   );

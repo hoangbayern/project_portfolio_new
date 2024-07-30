@@ -1,6 +1,8 @@
 import { socialLinks } from "@/lib/data";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+  
   return (
     <footer className="pb-4">
       <div className="hidden mdl:inline-flex xl:hidden items-center justify-center w-full py-6 gap-4">
@@ -14,7 +16,7 @@ const Footer = () => {
       </div>
       
       <div className="text-center font-medium text-gray-400 border-t-orange-50">
-        © 2023. All rights reserved by HuyHoang
+        © {currentYear}. All rights reserved by HuyHoang
       </div>
     </footer>
   );
